@@ -1,0 +1,104 @@
+.filter-bar {
+    display: none;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.filter-bar.visible {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(47, 108, 186);
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-bar select {
+    user-select: none;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.filter-bar option {
+    width: 85%;
+    height: 100%;
+    font-size: 16px;
+    color: black;
+}
+
+.filter-bar button {
+    user-select: none;
+    position: relative;
+    display: inline-block;
+    padding: 15px;
+    width: 95%;
+    margin: 10px;
+    background: none;
+    border: 1px solid white;
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.filter-bar button:hover {
+    background: white;
+    color: rgb(47, 108, 186);
+    transition: 1s;
+    transform: scale(1.1);
+}
+
+.filter-bar input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.filter-bar input::placeholder {
+    color: white;
+    font-family: sans-serif;
+}
+
+.filter-bar .filter-box {
+    justify-self: center;
+    padding: 10px 50px;
+    width: 75%;
+}
+
+.filter-bar .search-box {
+    justify-self: center;
+    padding: 10px 50px;
+    width: 75%;
+}
+
+.filter-bar label {
+    left: 0;
+    padding: 4px 0;
+    font-size: 12px;
+    color: #fff;
+    pointer-events: none;
+    align-self: flex-start;
+}
+
+.filter-bar h2 {
+    user-select: none;
+    margin: 0 0 20px;
+    padding-top: 30px;
+    color: #fff;
+    text-align: center;
+}

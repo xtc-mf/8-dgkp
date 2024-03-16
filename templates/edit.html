@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование</title>
+    <link rel="stylesheet" href="{% static 'css/animated-background.css' %}">
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+</head>
+<body>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<div class="content">
+    <div class="edit-box">
+        {% if user.is_authenticated %}
+            <div class="login-box">
+                <h2>Редактирование</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="user-box">
+                        {{ form.as_p }}
+                    </div>
+                    <a>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <button type="submit">Сохранить</button>
+                        {% if form.instance.breaking_status == 'Выполнено' %}
+                            {% if form.instance.breaking_email %}
+                                <button type="submit" name="send_email_button">Сообщить о готовности</button>
+                            {% endif %}
+                        {% endif %}
+                    </a>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>

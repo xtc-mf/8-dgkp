@@ -1,0 +1,36 @@
+div.pagination {
+    user-select: none;
+    margin-top: auto;
+    text-align: center;
+    width: 100%;
+}
+
+div.pagination span {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 4px;
+    font-size: 20px;
+    background: rgb(47, 108, 186);
+
+}
+
+div.pagination a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border-radius: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background: rgb(47, 108, 186);
+}
+
+div.pagination a:hover {
+    color: rgb(47, 108, 186);
+    background: white;
+    transition: 0.7s;
+}
+
+.current {
+    color: white;
+}

@@ -1,0 +1,119 @@
+.modal-window {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.25);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+
+    &:target {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    & > div {
+        width: 75%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2em;
+        background: rgb(47, 108, 186);
+    }
+
+    header {
+        font-weight: bold;
+    }
+
+    h1 {
+        font-size: 150%;
+        color: white;
+        font-family: Arial;
+        letter-spacing: 1px;
+        margin: 0 0 15px;
+    }
+}
+
+.modal-close {
+    color: white;
+    font-size: 15px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
+
+    &:hover {
+        color: rgb(103, 170, 255);
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.modal-window {
+    & > div {
+        border-radius: 1rem;
+    }
+}
+
+.modal-window div:not(:last-of-type) {
+    margin-bottom: 15px;
+}
+
+input {
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+label {
+    left: 0;
+    padding: 4px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    align-self: flex-start;
+}
+
+.modal-button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    background: none;
+    border: 0;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 10px;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+.modal-button:hover {
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #00a2ff, 0 0 25px #00a2ff, 0 0 50px #00a2ff, 0 0 100px #00a2ff;
+}

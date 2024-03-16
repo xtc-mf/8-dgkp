@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Главная страница</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+</head>
+<body>
+<div class="header">
+    <div class="inner-header flex">
+        <img src="{% static 'assets/logo.png' %}">
+        <h1>8DGKP</h1>
+    </div>
+    <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7"/>
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)"/>
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)"/>
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff"/>
+            </g>
+        </svg>
+    </div>
+    <div class="nav-bar">
+        {% if user.is_authenticated %}
+            <a class="nav-bar-a" href="{% url 'journal' %}">Заявки</a>
+            <a class="nav-bar-a" href="{% url 'profile' %}">Профиль</a>
+
+        {% else %}
+            <a class="nav-bar-a" href="{% url 'profile' %}">Авторизация</a>
+        {% endif %}
+        {% if user.is_superuser %}
+            <a class="nav-bar-a" href="{% url 'staff' %}">Персонал</a>
+        {% endif %}
+
+    </div>
+</div>
+<div class="login-box-container">
+    <div class="login-box">
+        <h2>Обнаружили поломку?<br>Оставьте заявку!</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="user-box">
+                {{ form.breaking_full_name }}
+                <label>ФИО:</label>
+
+            </div>
+            <div class="user-box">
+                {{ form.breaking_email }}
+                <label>Электронная почта (необязательное)</label>
+            </div>
+            <div class="user-box">
+                {{ form.breaking_room }}
+                <label>Кабинет:</label>
+
+            </div>
+            <div class="user-box">
+                {{ form.breaking_category }}
+                <label class="select-cat">Категория поломки:</label>
+
+            </div>
+            <div class="user-box">
+                {{ form.breaking_description }}
+                <label>Описание (необязательное):</label>
+
+            </div>
+            <a>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <button type="submit">Отправить</button>
+            </a>
+        </form>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Retrieve form errors from template context
+        var formErrors = {{ form_errors|default:"[]"|safe }};
+
+        if (formErrors.length > 0) {
+            var alertMessage = 'Ошибка заполнения формы:\n' + formErrors.join('\n');
+            alert(alertMessage);
+        }
+    });
+</script>
+</body>
+</html>

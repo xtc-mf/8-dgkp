@@ -1,0 +1,177 @@
+img {
+    pointer-events: none;
+    width: 70px;
+    height: 75px;
+    max-width: 70px;
+    max-height: 75px;
+    padding: 15px;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 48px;
+}
+
+p {
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #333333;
+}
+
+.header {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+    color: white;
+}
+
+
+.logo {
+    width: 50px;
+    fill: white;
+    padding-right: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.inner-header {
+    user-select: none;
+    width: 100%;
+    height: 250px;
+    margin: 0;
+    padding: 0;
+}
+
+.flex { /*Flexbox for containers*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.waves {
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    margin-bottom: -7px; /*Fix for safari gap*/
+    min-height: 100px;
+    max-height: 150px;
+}
+
+.content {
+    position: relative;
+    height: 20vh;
+    text-align: center;
+    background-color: white;
+}
+
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 14s;
+}
+
+.parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 20s;
+}
+
+.parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 26s;
+}
+
+.parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 40s;
+}
+
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+    .waves {
+        height: 40px;
+        min-height: 40px;
+    }
+
+    .content {
+        height: 30vh;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+
+.journal-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.journal-button {
+    margin: 10px;
+    width: 95%;
+    padding: 10px;
+    color: rgb(47, 108, 186);
+    background: white;
+    border: 1px solid #283077;
+    font-size: 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.journal-button:hover {
+    color: #0f21c7;
+    transform: scale(1.03);
+    transition: 0.5s;
+}
+
+.nav-bar {
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    height: 100px;
+    max-height: 150px;
+    background-color: white;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-bar-a {
+    color: rgb(47, 108, 186);
+    background: white;
+    border: 0;
+    padding: 10px;
+    margin: 10px;
+    font-size: 15px;
+    transform: scale(1.1);
+    border-radius: 5px;
+    transition: 1s;
+    text-decoration: none;
+}
+
+.nav-bar-a:hover {
+    color: #283077;
+    font-size: 25px;
+    transition: 1s;
+}

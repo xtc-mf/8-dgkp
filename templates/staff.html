@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Персонал</title>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/filter-bar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/journal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/paginator.css' %}">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+</head>
+<style>
+
+</style>
+<body>
+<div class="header">
+    <div class="inner-header flex">
+        <img src="{% static 'assets/logo.png' %}">
+        <h1>8DGKP</h1>
+    </div>
+    <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave"
+                      d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7"/>
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)"/>
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)"/>
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff"/>
+            </g>
+        </svg>
+    </div>
+    <div class="nav-bar">
+        <a class="nav-bar-a" href="{% url 'index' %}">Главная</a>
+        {% if user.is_authenticated %}
+            <a class="nav-bar-a" href="{% url 'profile' %}">Профиль</a>
+        {% endif %}
+        {% if user.is_superuser %}
+            <a class="nav-bar-a" href="{% url 'journal' %}">Заявки</a>
+            <a class="nav-bar-a" href="{% url 'report' %}">Отчетность</a>
+        {% endif %}
+    </div>
+</div>
+{% if user.is_superuser %}
+    <div class="journal-button-container">
+        <button class="journal-button" id="toggleButton">Параметры</button>
+    </div>
+    <div id="filterFormContainer" class="filter-bar">
+        <div class="filter-box">
+            <form method="GET">
+                {% if user.is_superuser %}
+                    <select id="category" name="category">
+                        <option value="">Все категории</option>
+                        {% for category in categories %}
+                            <option value="{{ category }}">{{ category }}</option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
+                <button type="submit">Применить фильтр</button>
+            </form>
+        </div>
+        <div class="search-box">
+            <form method="GET">
+                <input type="text" name="search" placeholder="Поиск..." value="{{ request.GET.search }}"
+                       autocomplete="off">
+                <button type="submit">Найти</button>
+            </form>
+        </div>
+        <h2>Добавление нового сотрудника</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+    <div class="wrapper">
+        <div class="table">
+            <div class="row header blue">
+                <div class="cell">
+                    ФИО
+                </div>
+                <div class="cell">
+                    Тел. номер
+                </div>
+                <div class="cell">
+                    Категория
+                </div>
+                <div class="cell" style="justify-content: center">
+                    Действие
+                </div>
+            </div>
+            {% for staff in staff_list %}
+                <div class="row">
+                    <div class="cell" data-title="ФИО">{{ staff.staff_fullname }}</div>
+                    <div class="cell" data-title="Тел. номер">{{ staff.staff_phone_number }}</div>
+                    <div class="cell" data-title="Категория">{{ staff.staff_category }}</div>
+                    <div class="cell" data-title="Действия">
+                        <div class="button-row">
+                            <div class="edit-btn">
+                                <div class="button-row">
+                                    <a href="{% url 'edit_staff' staff.id %}" class="action-a">Редактировать</a>
+                                </div>
+                                <form method="post"
+                                      action="{% url 'delete_staff' staff_id=staff.id staff_id=staff.id %}">
+                                    {% csrf_token %}
+                                    <a class="action-a"><button type="submit">Удалить</button></a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <h1>Таблица пуста.</h1>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="pagination">
+    <span>
+        {% if staff_list.has_previous %}
+            <a href="?page=1"><<</a>
+            <a href="?page={{ staff_list.previous_page_number }}">Предыдущая</a>
+        {% endif %}
+
+        <span class="current">
+            Стр. {{ staff_list.number }} из {{ staff_list.paginator.num_pages }}.
+        </span>
+
+        {% if staff_list.has_next %}
+            <a href="?page={{ staff_list.next_page_number }}">Следующая</a>
+            <a href="?page={{ staff_list.paginator.num_pages }}">>></a>
+        {% endif %}
+    </span>
+    </div>
+    <script>
+        document.getElementById('toggleButton').addEventListener('click', function () {
+            var filterFormContainer = document.getElementById('filterFormContainer');
+            filterFormContainer.classList.toggle('visible');
+        });
+    </script>
+{% endif %}
+</body>
+</html>

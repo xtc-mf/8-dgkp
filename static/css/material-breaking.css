@@ -1,0 +1,194 @@
+.material-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    padding: 30px 26px;
+    gap: 16px;
+    background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-family: Arial;
+    letter-spacing: 1px;
+    width: 100%;
+}
+
+.material-box h2 {
+    user-select: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+@media (width <= 600px) {
+    .material-box h2 {
+        font-size: 14pt;
+        text-align: center;
+        text-wrap: normal;
+    }
+}
+
+.material-box .main-title {
+    margin-bottom: 40px;
+}
+
+.material-box .user-box {
+    position: relative;
+
+}
+
+@media (width <= 900px) {
+    .material-box {
+        flex-direction: column;
+    }
+}
+
+.btn {
+    position: relative;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0 10px;
+    background: none;
+    border: 1px solid;
+    color: #ffffff;
+    font-size: 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #00a2ff, 0 0 25px #00a2ff, 0 0 50px #00a2ff, 0 0 100px #00a2ff;
+    transition: 1s;
+}
+
+.material-box .user-box input {
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.material-box .user-box select {
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    margin-right: 16px;
+}
+
+.material-box .user-box option {
+    width: 85%;
+    height: 100%;
+    font-size: 16px;
+    color: black;
+}
+
+.material-box .user-box p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+.material-el {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 0;
+}
+
+.material-el li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    text-wrap: normal;
+}
+.delete-btn {
+    font-size: 12pt;
+    padding: 6px 10px;
+    border: none;
+    margin-left: 4px;
+    margin-top: 0;
+    opacity: 0.7;
+}
+.delete-btn:hover {
+    opacity: 1;
+}
+
+.attribute {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.sub-attribute {
+    display: flex;
+
+}
+
+.material-box .user-box label {
+    left: 0;
+    padding: 4px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    align-self: flex-start;
+}
+
+.material-box button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    background: none;
+    border: 0;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 10px;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+.material-box button:hover {
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #00a2ff, 0 0 25px #00a2ff, 0 0 50px #00a2ff, 0 0 100px #00a2ff;
+}
+
+a {
+    font-family: Arial;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    background: none;
+    border: 0;
+    color: rgb(47, 108, 186);
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 10px;
+    text-align: center;
+    letter-spacing: 1px;
+    align-self: flex-end;
+}
+
+a:hover {
+    border-radius: 5px;
+    box-shadow: 0 0 5px #00a2ff, 0 0 25px #00a2ff, 0 0 50px #00a2ff, 0 0 100px #00a2ff;
+}

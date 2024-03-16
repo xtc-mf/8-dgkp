@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление материала</title>
+    <link rel="stylesheet" href="{% static 'css/animated-background.css' %}">
+    <link rel="stylesheet" href="{% static 'css/material-breaking.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal-screen.css' %}">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+</head>
+<body>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<div class="content">
+    <div class="container">
+        <div class="material-box">
+            {% if user.is_authenticated %}
+                <div class="user-box">
+                    <div class="material-left">
+                        <h2 class="main-title">Добавление материала к заявке</h2>
+                        {% if form.errors %}
+                            <ul>
+                                {% for error in form.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="attribute">
+                                <label for="breaking">Заявка</label>
+                                <select id="id_breaking" name="breaking" required>
+                                    {% for choice in form.breaking.field.choices %}
+                                        <option value="{{ choice.0 }}"
+                                                {% if choice.0 == breaking.id %}selected{% endif %}>{{ choice.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="attribute">
+                                <label for="material">Материал</label>
+                                <div class="sub-attribute">
+                                    <label for="id_material"></label>
+                                    <select id="id_material" name="material" required>
+                                        {% for choice in form.material.field.choices %}
+                                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <a class="btn" href="#open-modal">+</a>
+                                </div>
+                            </div>
+                            <div class="attribute">
+                                <label for="quantity">Количество</label>
+                                <input type="number" id="id_quantity" name="quantity" required min="0" max="9999"
+                                       step="any"/>
+                            </div>
+                            <button type="submit">Добавить</button>
+                        </form>
+                    </div>
+                </div>
+                <br>
+                <div class="user-box">
+                    <h2>Привязанные материалы:</h2>
+                    <ul class="material-el">
+                        {% for material in materials %}
+                            <li>
+                                {{ material.material }}: {{ material.quantity }}
+                                <form method="post"
+                                      action="{% url 'delete_material_breaking' breaking_id=breaking.id material_id=material.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">X</button>
+                                </form>
+                            </li>
+                        {% empty %}
+                            <li>Нет связанных материалов</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div id="open-modal" class="modal-window">
+        <div>
+            <a href="#" class="modal-close">X</a>
+            <h1>Добавление материала</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ mat_form.as_p }}
+                <button type="submit" class="modal-button">Добавить</button>
+            </form>
+        </div>
+    </div>
+    <a class="" href="{% url 'journal' %}">Выход</a>
+</div>
+</body>
+</html>

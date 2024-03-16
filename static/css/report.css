@@ -1,0 +1,104 @@
+body {
+    font-family: sans-serif;
+}
+
+.report-container {
+    padding: 50px;
+    user-select: none;
+}
+
+.report-container .first-container {
+    padding: 25px;
+}
+
+.report-container .first-container h2 {
+    color: rgb(47, 108, 186);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.report-container .first-container .item {
+    color: white;
+    background-color: rgb(47, 108, 186);
+    border-radius: 20px;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 100%;
+}
+
+.report-container .first-container .item h2 {
+    color: white;
+}
+
+.report-container .first-container .item h3 {
+    color: white;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1px;
+}
+
+.report-container .first-container .item p {
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.report-container .second-container {
+    padding: 25px;
+}
+
+.report-container .second-container h2 {
+    color: rgb(47, 108, 186);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.report-container .second-container p {
+    color: rgb(47, 108, 186);
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+.report-container .third-container {
+    padding: 25px;
+}
+
+.report-container .third-container h2 {
+    color: rgb(47, 108, 186);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.report-container .second-container p {
+    color: rgb(47, 108, 186);
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+.report-container a {
+    user-select: none;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    background: none;
+    border: 2px solid rgb(47, 108, 186);
+    color: rgb(47, 108, 186);
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 10px;
+    letter-spacing: 4px;
+}
+
+.report-container a:hover {
+    color: rgb(9, 47, 98);
+    border-radius: 5px;
+    border: 2px solid #00a2ff;
+    box-shadow: 0 0 5px #00a2ff, 0 0 25px #00a2ff, 0 0 50px #00a2ff, 0 0 100px #00a2ff;
+}
+
+
